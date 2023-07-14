@@ -1,0 +1,13 @@
+main{
+    margin:0px 0px 60px 0px;  /*ajout de ligne*/
+  }
+  .features {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 920px) {
+    .features {
+      flex-direction: row;
+    }
+  }
