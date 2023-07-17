@@ -5,12 +5,19 @@ import FeatureItem from "../../components/FeatureItem/FeatureItem";
 import logofeatureChat from "../../assets/img/icon-chat.png";
 import logofeatureMoney from "../../assets/img/icon-money.png";
 import logofeatureSecurity from "../../assets/img/icon-security.png";
+// import { setUser } from "../../Redux/Reducers/UserReducer";
+
+import { useDispatch, useSelector } from "react-redux";
+
 export default function Home() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.user);
+  console.log(state, "hey");
   return (
     <main>
       <HeroBanner />
-      <section class="features">
-        <h2 class="sr-only">Features</h2>
+      <section className="features">
+        <h2 className="sr-only">Features</h2>
         <FeatureItem
           state={{
             title: "You are our #1 priority",
