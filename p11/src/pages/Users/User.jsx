@@ -1,0 +1,53 @@
+import React from "react";
+import "./User.css";
+import Account from "../../components/Account/Account";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { useEffect } from "react";
+import { setGetProfile } from "../../Redux/Reducers/ProfileUserReducer";
+
+export default function Users() {
+  const token = useSelector((state) => state.signIn.token);
+  const dataUser = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+  console.log(token, dataUser);
+  useEffect(() => {
+    console.log("entre dans le useEffect");
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+        console.log(data.body, "api profile");
+        dispatch(setGetProfile({ data }));
+      } catch (error) {
+        console.log(error);
+        // Gère les erreurs de l'appel API
+      }
+    };
+
+    fetchData(); // a voir
+  }, [token]);
+  return (
+    <main class="main bg-dark">
+      <div class="header">
+        <h1>
+          Welcome back
+          <br />
+          Tony Jarvis!
+        </h1>
+        <button class="edit-button">Edit Name</button>
+      </div>
+      <h2 class="sr-only">Accounts</h2>
+
+      <Account />
+      <Account />
+      <Account />
+    </main>
+  );
+}

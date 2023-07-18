@@ -7,7 +7,7 @@ const signInSlice = createSlice({
   },
   reducers: {
     setSignIn: (state, action) => {
-      console.log(action);
+      console.log(action.payload.tkn, "reducer");
       state.token = action.payload.tkn;
     },
     // Autres reducers

@@ -32,11 +32,11 @@ export default function SignIn() {
       );
       // recuperation du token
       const tkn = response.data.body.token;
-      console.log(tkn);
+      console.log(tkn, "tt");
       // Dispatch l'action setSignIn avec le token reçu de l'API
       dispatch(setSignIn({ tkn }));
       // redirection vers son profile
-      navigate("/users");
+      navigate("/user");
       console.log(token, "api");
     } catch (error) {
       // Gérer les erreurs de la requête API
