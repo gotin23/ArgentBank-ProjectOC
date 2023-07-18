@@ -1,8 +1,11 @@
 import React from "react";
 import "./Users.css";
 import Account from "../../components/Account/Account";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Users() {
+  const token = useSelector((state) => state.signIn);
+  console.log(token, "user");
   return (
     <main class="main bg-dark">
       <div class="header">
