@@ -9,7 +9,7 @@ import { setGetProfile } from "../../Redux/Reducers/ProfileUserReducer";
 export default function Users() {
   const token = useSelector((state) => state.signIn.token);
   const dataUser = useSelector((state) => state.profile);
-  console.log(dataUser.email);
+  console.log(document.cookie);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -3,14 +3,23 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { setSignIn } from "../../Redux/Reducers/SignInReducer";
 export default function SignIn() {
   const token = useSelector((state) => state.signIn);
+  const cookie = document.cookie.replace("email=", "");
 
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("d");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  useEffect(() => {
+    if (cookie) {
+      const arr = cookie.split(" ");
+      setUsername(arr[0]);
+      setPassword(arr[1]);
+    }
+  }, []);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -36,6 +45,7 @@ export default function SignIn() {
       // Dispatch l'action setSignIn avec le token reçu de l'API
       dispatch(setSignIn({ tkn }));
       // redirection vers son profile
+      createCookie("email", username + " " + password, 1);
       navigate("/user");
       console.log(token, "api");
     } catch (error) {
@@ -43,6 +53,15 @@ export default function SignIn() {
       console.log(error);
     }
   };
+  function createCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+  }
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
