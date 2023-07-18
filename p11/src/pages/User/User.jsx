@@ -2,18 +2,20 @@ import React from "react";
 import "./User.css";
 import Account from "../../components/Account/Account";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+
 import { useEffect } from "react";
 import { setGetProfile } from "../../Redux/Reducers/ProfileUserReducer";
 
 export default function Users() {
   const token = useSelector((state) => state.signIn.token);
   const dataUser = useSelector((state) => state.profile);
+  console.log(dataUser.email);
   const dispatch = useDispatch();
-  console.log(token, dataUser);
+
   useEffect(() => {
     console.log("entre dans le useEffect");
     const fetchData = async () => {
+      //recuperation de la data utilisateur
       try {
         const response = await fetch("http://localhost:3001/api/v1/user/profile", {
           method: "POST",
@@ -30,20 +32,20 @@ export default function Users() {
         // Gère les erreurs de l'appel API
       }
     };
-
-    fetchData(); // a voir
-  }, [token]);
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
-    <main class="main bg-dark">
-      <div class="header">
+    <main className="main bg-dark">
+      <div className="header">
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {dataUser.firstName + " " + dataUser.lastName + " !"}
         </h1>
-        <button class="edit-button">Edit Name</button>
+        <button className="edit-button">Edit Name</button>
       </div>
-      <h2 class="sr-only">Accounts</h2>
+      <h2 className="sr-only">Accounts</h2>
 
       <Account />
       <Account />

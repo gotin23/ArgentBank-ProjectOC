@@ -6,7 +6,7 @@ import logoHeader from "../../assets/img/argentBankLogo.png";
 import { setSignIn } from "../../Redux/Reducers/SignInReducer";
 
 export default function Header() {
-  const token = useSelector((state) => state.signIn);
+  const token = useSelector((state) => state.signIn.token);
   const dispatch = useDispatch();
   const handleLogout = () => {
     // si l'utilisateur est connecté, suprresion du token pour se deconnecter
@@ -24,9 +24,9 @@ export default function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
       <div>
-        <Link className="main-nav-item" to="./sign-in" onClick={handleLogout}>
+        <Link className="main-nav-item" to={token ? "/" : "./sign-in"} onClick={handleLogout}>
           <i className="fa fa-user-circle"></i>
-          {token.token ? "Logout" : "Sign-in"}
+          {token ? "Logout" : "Sign-in"}
         </Link>
       </div>
     </nav>
