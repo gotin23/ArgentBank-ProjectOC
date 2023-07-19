@@ -22,3 +22,14 @@ export const login = async (user, pass = {}) => {
   const tkn = response.data.body.token;
   return tkn;
 };
+
+export const getProfile = async (token) => {
+  const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response;
+};

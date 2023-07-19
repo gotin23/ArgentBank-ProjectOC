@@ -4,6 +4,7 @@ import Account from "../../components/Account/Account";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useEffect } from "react";
+import { getProfile } from "../../service/Api";
 import { setGetProfile } from "../../Redux/Reducers/ProfileUserReducer";
 
 export default function Users() {
@@ -17,16 +18,10 @@ export default function Users() {
     const fetchData = async () => {
       //recuperation de la data utilisateur
       try {
-        const response = await fetch("http://localhost:3001/api/v1/user/profile", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await getProfile(token);
         const data = await response.json();
-        console.log(data.body, "api profile");
         dispatch(setGetProfile({ data }));
+        console.log(dataUser);
       } catch (error) {
         console.log(error);
         // Gère les erreurs de l'appel API
@@ -35,6 +30,29 @@ export default function Users() {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  // useEffect(() => {
+  //   console.log("entre dans le useEffect");
+  //   const fetchData = async () => {
+  //     //recuperation de la data utilisateur
+  //     try {
+  //       const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+  //       const data = await response.json();
+  //       console.log(data.body, "api profile");
+  //       dispatch(setGetProfile({ data }));
+  //     } catch (error) {
+  //       console.log(error);
+  //       // Gère les erreurs de l'appel API
+  //     }
+  //   };
+  //   fetchData();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   return (
     <main className="main bg-dark">
       <div className="header">
