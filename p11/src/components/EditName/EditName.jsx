@@ -3,6 +3,7 @@ import "./EditName.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNewUserName } from "../../Redux/Reducers/ProfileUserReducer";
+import { editUser } from "../../service/Api";
 
 export default function EditName({ onSubmit }) {
   const dataUser = useSelector((state) => state.profile);
@@ -14,15 +15,7 @@ export default function EditName({ onSubmit }) {
     e.preventDefault();
 
     try {
-      await fetch("http://localhost:3001/api/v1/user/profile", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ userName: editUserName }),
-      });
-
+      await editUser(token, editUserName);
       console.log(onSubmit);
       onSubmit();
 
@@ -31,6 +24,28 @@ export default function EditName({ onSubmit }) {
       console.log(error);
     }
   };
+
+  // const ChangeUserName = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     await fetch("http://localhost:3001/api/v1/user/profile", {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify({ userName: editUserName }),
+  //     });
+
+  //     console.log(onSubmit);
+  //     onSubmit();
+
+  //     dispatch(setNewUserName({ editUserName }));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <section className="editName-content">
