@@ -7,10 +7,10 @@ import logofeatureMoney from "../../assets/img/icon-money.png";
 import logofeatureSecurity from "../../assets/img/icon-security.png";
 // import { setUser } from "../../Redux/Reducers/UserReducer";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function Home() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const state = useSelector((state) => state.user);
   console.log(state, "hey");
   return (

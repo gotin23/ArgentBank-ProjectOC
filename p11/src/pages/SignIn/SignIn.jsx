@@ -1,15 +1,14 @@
 import "./SignIn.css";
-import axios from "axios";
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setSignIn } from "../../Redux/Reducers/SignInReducer";
 import { login } from "../../service/Api";
 export default function SignIn() {
-  const token = useSelector((state) => state.signIn);
+  // const token = useSelector((state) => state.signIn);
   const cookieUser = getCookie("email");
-  const cookieRemember = getCookie("rememberMe");
 
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
@@ -25,44 +24,13 @@ export default function SignIn() {
       setUsername(arr[0]);
       setPassword(arr[1]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCheckBox = () => {
     setCheckRemenber(!checkRemember);
   };
 
-  // const handleSignIn = async (e) => {
-  //   e.preventDefault();
-
-  //   // appel a l'api pour recuperer le token
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost:3001/api/v1/user/login",
-  //       {
-  //         email: username,
-  //         password: password,
-  //       },
-  //       {
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     // recuperation du token
-  //     const tkn = response.data.body.token;
-  //     console.log(tkn, "tt");
-  //     // Dispatch l'action setSignIn avec le token reçu de l'API
-  //     dispatch(setSignIn({ tkn }));
-  //     // redirection vers son profile
-  //     createCookie("email", username + " " + password, 1);
-  //     navigate("/user");
-  //     console.log(token, "api");
-  //   } catch (error) {
-  //     // Gérer les erreurs de la requête API
-  //     console.log(error);
-  //   }
-  // };
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
@@ -94,11 +62,11 @@ export default function SignIn() {
 
   function getCookie(nom) {
     nom = nom + "=";
-    var liste = document.cookie.split(";");
-    for (var i = 0; i < liste.length; i++) {
-      var c = liste[i];
-      while (c.charAt(0) == " ") c = c.substring(1, c.length);
-      if (c.indexOf(nom) == 0) return c.substring(nom.length, c.length);
+    let liste = document.cookie.split(";");
+    for (let i = 0; i < liste.length; i++) {
+      let c = liste[i];
+      while (c.charAt(0) === " ") c = c.substring(1, c.length);
+      if (c.indexOf(nom) === 0) return c.substring(nom.length, c.length);
     }
     return null;
   }

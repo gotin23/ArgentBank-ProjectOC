@@ -15,9 +15,14 @@ const profileSlice = createSlice({
       state.lastName = action.payload.data.body.lastName;
       state.userName = action.payload.data.body.userName;
     },
+    setNewUserName: (state, action) => {
+      console.log(action.payload, "reducer");
+      state.userName = action.payload.editUserName;
+    },
     // Autres reducers
   },
 });
 
 export const { setGetProfile } = profileSlice.actions;
+export const { setNewUserName } = profileSlice.actions;
 export default profileSlice.reducer;
