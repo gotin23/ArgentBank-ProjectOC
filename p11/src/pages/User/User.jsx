@@ -4,8 +4,9 @@ import Account from "../../components/Account/Account";
 import EditName from "../../components/EditName/EditName";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getProfile } from "../../service/Api";
+// import { getProfile } from "../../service/Api";
 import { setGetProfile } from "../../Redux/Reducers/ProfileUserReducer";
+import { performApiAction } from "../../service/Api";
 
 export default function Users() {
   const token = useSelector((state) => state.signIn.token);
@@ -15,12 +16,11 @@ export default function Users() {
   const [toggleEditName, setToggleEditName] = useState(false);
   console.log(dataUser);
   useEffect(() => {
-    console.log("entre dans le useEffect");
     const fetchData = async () => {
       //recuperation de la data utilisateur
       try {
-        const response = await getProfile(token);
-        const data = await response.json();
+        const data = await performApiAction("getProfile", token, {});
+        console.log(data);
         dispatch(setGetProfile({ data }));
         console.log(dataUser);
       } catch (error) {
@@ -33,7 +33,6 @@ export default function Users() {
   }, []);
 
   const handleEditName = () => {
-    console.log("ok");
     setToggleEditName(!toggleEditName);
     console.log(toggleEditName);
   };

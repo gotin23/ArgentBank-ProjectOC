@@ -3,7 +3,8 @@ import "./EditName.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNewUserName } from "../../Redux/Reducers/ProfileUserReducer";
-import { editUser } from "../../service/Api";
+// import { editUser } from "../../service/Api";
+import { performApiAction } from "../../service/Api";
 
 export default function EditName({ onSubmit }) {
   const dataUser = useSelector((state) => state.profile);
@@ -15,7 +16,7 @@ export default function EditName({ onSubmit }) {
     e.preventDefault();
 
     try {
-      await editUser(token, editUserName);
+      await performApiAction("editUser", token, { userName: editUserName });
       console.log(onSubmit);
       onSubmit();
 

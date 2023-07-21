@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import logoHeader from "../../assets/img/argentBankLogo.png";
 import { setSignIn } from "../../Redux/Reducers/SignInReducer";
+import { setLogout } from "../../Redux/Reducers/SignInReducer";
 
 export default function Header() {
   const token = useSelector((state) => state.signIn.token);
@@ -12,7 +13,7 @@ export default function Header() {
     // si l'utilisateur est connecté, suprresion du token pour se deconnecter
     if (token) {
       const tnk = "";
-      dispatch(setSignIn({ tnk }));
+      dispatch(setLogout({ tnk }));
       console.log(token);
     }
   };

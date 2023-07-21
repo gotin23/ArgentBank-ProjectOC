@@ -7,12 +7,18 @@ const signInSlice = createSlice({
   },
   reducers: {
     setSignIn: (state, action) => {
-      console.log(action.payload.response, "reducer");
-      state.token = action.payload.response;
+      console.log(action.payload.response.body);
+      state.token = action.payload.response.body.token;
+    },
+    setLogout: (state, action) => {
+      console.log(action);
+      state.token = action.payload.tnk;
     },
     // Autres reducers
+    // a corriger la deconixion
   },
 });
 
 export const { setSignIn } = signInSlice.actions;
+export const { setLogout } = signInSlice.actions;
 export default signInSlice.reducer;

@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setSignIn } from "../../Redux/Reducers/SignInReducer";
-import { login } from "../../service/Api";
+// import { login } from "../../service/Api.jsx";
+import { performApiAction } from "../../service/Api.jsx";
 export default function SignIn() {
   // const token = useSelector((state) => state.signIn);
   const cookieUser = getCookie("email");
@@ -34,8 +35,10 @@ export default function SignIn() {
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const response = await login(username, password);
-      console.log(response, "tkn");
+      const response = await performApiAction("login", null, {
+        email: username,
+        password: password,
+      });
       // Dispatch l'action setSignIn avec le token reçu de l'API
       dispatch(setSignIn({ response }));
       //creation des cookies si checkbox sur true
