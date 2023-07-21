@@ -41,6 +41,7 @@ const API_BASE_URL = "http://localhost:3001/api/v1";
 //   );
 // };
 
+// Toute les actions de l'api
 const apiActions = {
   login: {
     method: "post",
@@ -57,8 +58,13 @@ const apiActions = {
     url: "/user/profile",
     requiresAuth: true,
   },
+  signUp: {
+    method: "post",
+    url: "/user/signup",
+    requiresAuth: false,
+  },
 };
-
+// fonction pour gerer les appel a l'api avec l'action donnée
 export const performApiAction = async (action, token, data = {}) => {
   const actionConfig = apiActions[action];
   console.log(action, "api");

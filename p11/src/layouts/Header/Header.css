@@ -32,3 +32,10 @@
     max-width: 100%;
     width: 200px;
   }
+  .fa-user-circle, .fa-arrow-right{
+    margin-right: 5px;
+  }
+  .fa-arrow-right{
+    font-size: 15px;
+  }
+ 

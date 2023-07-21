@@ -48,12 +48,13 @@ export default function Users() {
         <button className="edit-button" onClick={handleEditName}>
           Edit Name
         </button>
+
         {toggleEditName && <EditName onSubmit={handleEditName} />}
       </div>
       <h2 className="sr-only">Accounts</h2>
-      <Account />
-      <Account />
-      <Account />
+      <Account state={{ accountNumber: "Argent Bank Checking (x8349)", balance: "$2,082.79", status: "Available Balance" }} />
+      <Account state={{ accountNumber: "Argent Bank Savings (x6712)", balance: "$10,928.42", status: "Available Balance" }} />
+      <Account state={{ accountNumber: "Argent Bank Credit Card (x8349)", balance: "$184.30", status: "Current Balance" }} />
     </main>
   );
 }

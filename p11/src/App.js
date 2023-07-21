@@ -6,6 +6,7 @@ import Header from "./layouts/Header/Header";
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import User from "./pages/User/User";
+import SignUp from "./pages/SignUp/SignUp";
 
 function App() {
   const token = useSelector((state) => state.signIn.token);
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         {token !== "" && <Route path="/user" element={<User />} />}
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
       <Footer />
     </div>
