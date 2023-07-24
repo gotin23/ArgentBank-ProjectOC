@@ -14,8 +14,6 @@ const signInSlice = createSlice({
       console.log(action);
       state.token = action.payload.tnk;
     },
-    // Autres reducers
-    // a corriger la deconixion
   },
 });
 

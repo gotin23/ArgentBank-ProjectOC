@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       <Routes>
         <Route path="/" element={<Home />} />
         {token !== "" && <Route path="/user" element={<User />} />}

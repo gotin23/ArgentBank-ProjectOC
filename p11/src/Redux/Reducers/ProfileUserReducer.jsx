@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const profileSlice = createSlice({
   name: "profile",
   initialState: {
-    email: "string",
-    firstName: "string",
-    lastName: "string",
-    userName: "string",
+    email: "",
+    firstName: "",
+    lastName: "",
+    userName: "",
   },
   reducers: {
     setGetProfile: (state, action) => {
@@ -19,7 +19,6 @@ const profileSlice = createSlice({
       console.log(action.payload, "reducer");
       state.userName = action.payload.editUserName;
     },
-    // Autres reducers
   },
 });
 

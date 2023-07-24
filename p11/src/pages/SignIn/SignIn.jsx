@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setSignIn } from "../../Redux/Reducers/SignInReducer";
-// import { login } from "../../service/Api.jsx";
+
 import { performApiAction } from "../../service/Api.jsx";
 export default function SignIn() {
-  // const token = useSelector((state) => state.signIn);
   const cookieUser = getCookie("email");
 
   const dispatch = useDispatch();
@@ -17,7 +16,6 @@ export default function SignIn() {
   const [checkRemember, setCheckRemenber] = useState(false);
   const navigate = useNavigate();
 
-  // fonction pour remplir les input si cookie present
   useEffect(() => {
     if (cookieUser) {
       setCheckRemenber(true);

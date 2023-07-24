@@ -3,7 +3,6 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import logoHeader from "../../assets/img/argentBankLogo.png";
-
 import { setLogout } from "../../Redux/Reducers/SignInReducer";
 
 export default function Header() {

@@ -3,7 +3,6 @@ import "./EditName.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNewUserName } from "../../Redux/Reducers/ProfileUserReducer";
-// import { editUser } from "../../service/Api";
 import { performApiAction } from "../../service/Api";
 
 export default function EditName({ onSubmit }) {
