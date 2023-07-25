@@ -16,7 +16,7 @@ export default function EditName({ onSubmit }) {
 
     try {
       await performApiAction("editUser", token, { userName: editUserName });
-      console.log(onSubmit);
+
       onSubmit();
 
       dispatch(setNewUserName({ editUserName }));

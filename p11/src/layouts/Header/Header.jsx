@@ -15,7 +15,6 @@ export default function Header() {
     if (token) {
       const tnk = "";
       dispatch(setLogout({ tnk }));
-      console.log(token);
     }
   };
 
@@ -27,13 +26,13 @@ export default function Header() {
       </Link>
       <div>
         {token && (
-          <Link class="main-nav-item" to="/user">
-            <i class="fa fa-user-circle"></i>
+          <Link className="main-nav-item" to="/user">
+            <i className="fa fa-user-circle"></i>
             {dataUser.firstName}
           </Link>
         )}
         <Link className="main-nav-item" to={token ? "/" : "./sign-in"} onClick={handleLogout}>
-          {token ? <i class="fa fa-arrow-right fa-lg"></i> : <i class="fa fa-user-circle"></i>}
+          {token ? <i className="fa fa-arrow-right fa-lg"></i> : <i className="fa fa-user-circle"></i>}
           {token ? "Sign Out" : "Sign-in"}
         </Link>
       </div>

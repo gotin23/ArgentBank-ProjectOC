@@ -10,7 +10,7 @@ import SignUp from "./pages/SignUp/SignUp";
 
 function App() {
   const token = useSelector((state) => state.signIn.token);
-  console.log(token);
+
   return (
     <div className="App">
       <Header />

@@ -55,17 +55,23 @@ export default function SignUp() {
           </div>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" id="username" value={username} autoComplete="username" onChange={(e) => setUsername(e.target.value)} />
             {!valideUsername && errorMessage && <p>le nom d'utilisateur doit contenir au moins 5 caractéres</p>}
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" value={password.password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" id="password" value={password.password} autoComplete="new-password" onChange={(e) => setPassword(e.target.value)} />
             {!validePassword && errorMessage && <p>le mot de passe doit contenir au moins 5 caractéres</p>}
           </div>
           <div className="input-wrapper">
             <label htmlFor="passwordConfirmation">Confirm password</label>
-            <input type="password" id="passwordConfirmation" value={password.passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
+            <input
+              type="password"
+              id="passwordConfirmation"
+              value={password.passwordConfirmation}
+              autoComplete="new-password"
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+            />
             {!validePasswordConfirmation && errorMessage && <p>doit etre egale au mot de passe</p>}
           </div>
           <div className="input-wrapper">

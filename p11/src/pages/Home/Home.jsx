@@ -6,11 +6,7 @@ import logofeatureChat from "../../assets/img/icon-chat.png";
 import logofeatureMoney from "../../assets/img/icon-money.png";
 import logofeatureSecurity from "../../assets/img/icon-security.png";
 
-import { useSelector } from "react-redux";
-
 export default function Home() {
-  const state = useSelector((state) => state.user);
-  console.log(state, "hey");
   return (
     <main>
       <HeroBanner />

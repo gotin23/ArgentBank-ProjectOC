@@ -14,15 +14,14 @@ export default function Users() {
 
   const dispatch = useDispatch();
   const [toggleEditName, setToggleEditName] = useState(false);
-  console.log(dataUser);
+
   useEffect(() => {
     const fetchData = async () => {
       //recuperation de la data utilisateur
       try {
         const data = await performApiAction("getProfile", token, {});
-        console.log(data);
+
         dispatch(setGetProfile({ data }));
-        console.log(dataUser);
       } catch (error) {
         console.log(error, "error");
         // Gère les erreurs de l'appel API
@@ -34,7 +33,6 @@ export default function Users() {
 
   const handleEditName = () => {
     setToggleEditName(!toggleEditName);
-    console.log(toggleEditName);
   };
 
   return (

@@ -42,11 +42,11 @@ export default function SignIn() {
         <form className="sign-in-form" onSubmit={handleSignIn}>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" id="username" value={username} autoComplete="username" onChange={(e) => setUsername(e.target.value)} />
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" id="password" value={password} autoComplete="new-password" onChange={(e) => setPassword(e.target.value)} />
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" checked={checkRemember} onChange={handleCheckBox} />

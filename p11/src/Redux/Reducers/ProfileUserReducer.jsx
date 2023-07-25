@@ -16,7 +16,6 @@ const profileSlice = createSlice({
       state.userName = action.payload.data.body.userName;
     },
     setNewUserName: (state, action) => {
-      console.log(action.payload, "reducer");
       state.userName = action.payload.editUserName;
     },
   },

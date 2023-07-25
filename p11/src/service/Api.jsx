@@ -28,7 +28,7 @@ const apiActions = {
 // fonction pour gerer les appel a l'api avec l'action donnée
 export const performApiAction = async (action, token, data = {}) => {
   const actionConfig = apiActions[action];
-  console.log(action, "api");
+
   if (!actionConfig) {
     console.error("Action non prise en charge.");
     return;
