@@ -7,11 +7,9 @@ const signInSlice = createSlice({
   },
   reducers: {
     setSignIn: (state, action) => {
-      console.log(action.payload.response.body);
       state.token = action.payload.response.body.token;
     },
     setLogout: (state, action) => {
-      console.log(action);
       state.token = action.payload.tnk;
     },
   },

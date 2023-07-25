@@ -47,3 +47,12 @@
     padding: 5px;
     font-size: 1.2rem;
   }
+   .sign-in-form{
+    margin-bottom: 30px;
+   }
+  .create-new-account-link{
+    text-decoration: none;
+    color: black;
+    margin-top: 30px;
+
+  }

@@ -39,7 +39,7 @@ export default function SignUp() {
 
   return (
     <main className="main bg-dark">
-      <section className="sign-in-content">
+      <section className="sign-up-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign Up</h1>
         <form onSubmit={handleSignUp}>
