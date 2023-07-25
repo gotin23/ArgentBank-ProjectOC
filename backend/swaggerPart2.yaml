@@ -1,0 +1,26 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Transactions API
+schemes:
+  - https
+basePath: /api/v1 # Chemin de base de votre API sans protocole ni hôte
+paths:
+  /accounts:
+    get:
+      summary: Get all accounts
+      description: Get all user accounts from my API.
+      security:
+        - BearerAuth: [] # Indique que l'authentification se fait avec un token Bearer
+      responses:
+        200:
+          description: Get all account Succesfully
+        400:
+          description: Get all account Unauthorized
+        501:
+          description: Server error
+securityDefinitions:
+  BearerAuth: # Définition de la sécurité pour le token Bearer
+    type: apiKey
+    name: Authorization
+    in: header
