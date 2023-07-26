@@ -4,7 +4,7 @@ info:
   title: Transactions API
 schemes:
   - https
-basePath: /api/v1 # Chemin de base de votre API sans protocole ni hôte
+basePath: /api/v1 # Chemin de base de l'API
 paths:
   /accounts:
     get:
@@ -14,11 +14,33 @@ paths:
         - BearerAuth: [] # Indique que l'authentification se fait avec un token Bearer
       responses:
         200:
-          description: Get all account Succesfully
+          description: Get all account Successfully
         400:
           description: Get all account Unauthorized
         501:
           description: Server error
+  /accounts/{account_id}/transactions:
+    get:
+      summary: Get all transactions of an account
+      description: Get all transactions associated with a specific account from my API.
+      security:
+        - BearerAuth: [] # Indique que l'authentification se fait avec un token Bearer
+      parameters:
+        - name: account_id
+          in: path
+          description: The ID of the account for which to fetch transactions.
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Get all transactions Successfully
+        400:
+          description: Get all transactions Unauthorized
+        404:
+          description: Account not found
+        501:
+          description: Server error
+
 securityDefinitions:
   BearerAuth: # Définition de la sécurité pour le token Bearer
     type: apiKey
