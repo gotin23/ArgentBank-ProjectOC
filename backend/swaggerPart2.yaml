@@ -40,18 +40,13 @@ paths:
           description: Account not found
         501:
           description: Server error
-  /accounts/{account_id}/transactions/{transaction_id}:
+  /transactions/{transaction_id}/category:
     put:
       summary: Edit a transaction's category
       description: Edit the category of a specific transaction in my API.
       security:
         - BearerAuth: [] # Indique que l'authentification se fait avec un token Bearer
       parameters:
-        - name: account_id
-          in: path
-          description: The ID of the account containing the transaction.
-          required: true
-          type: integer
         - name: transaction_id
           in: path
           description: The ID of the transaction to edit.
@@ -68,6 +63,33 @@ paths:
           description: Transaction's category edited successfully
         400:
           description: Edit transaction Unauthorized
+        404:
+          description: Transaction or account not found
+        501:
+          description: Server error
+  /transactions/{transaction_id}/note:
+    post:
+      summary: Add a note to a transaction
+      description: Add a note to a specific transaction in my API.
+      security:
+        - BearerAuth: [] # Indique que l'authentification se fait avec un token Bearer
+      parameters:
+        - name: transaction_id
+          in: path
+          description: The ID of the transaction to add a note.
+          required: true
+          type: integer
+        - name: note
+          in: body
+          description: The note to add transaction.
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Note added to the transaction successfully
+        400:
+          description: Add note to transaction Unauthorized
         404:
           description: Transaction or account not found
         501:
