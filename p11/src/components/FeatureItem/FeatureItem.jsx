@@ -1,6 +1,5 @@
 import React from "react";
 import "./FeatureItem.css";
-import logoFeature from "../../assets/img/icon-chat.png";
 
 export default function FeatureItem({ state }) {
   return (

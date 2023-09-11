@@ -12,7 +12,7 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
+  // constantes pour verifier si les inputs sont valident
   const valideUsername = username.length >= 4 ? true : false;
   const valideFirstName = firstName.length >= 2 ? true : false;
   const valideLastName = lastName.length >= 2 ? true : false;
@@ -46,22 +46,22 @@ export default function SignUp() {
           <div className="input-wrapper">
             <label htmlFor="firstName">First name</label>
             <input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-            {!valideFirstName && errorMessage && <p>le prenom doit contenir au moins 2 caractéres</p>}
+            {!valideFirstName && errorMessage && <p>Your firstname must contain a minimum of 2 characters.</p>}
           </div>
           <div className="input-wrapper">
             <label htmlFor="lastName">Last name</label>
             <input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-            {!valideLastName && errorMessage && <p>le nom doit contenir au moins 2 caractéres</p>}
+            {!valideLastName && errorMessage && <p>Your lastname must contain a minimum of 2 characters.</p>}
           </div>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
             <input type="text" id="username" value={username} autoComplete="username" onChange={(e) => setUsername(e.target.value)} />
-            {!valideUsername && errorMessage && <p>le nom d'utilisateur doit contenir au moins 5 caractéres</p>}
+            {!valideUsername && errorMessage && <p>Your username must contain a minimum of 5 characters.</p>}
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input type="password" id="password" value={password.password} autoComplete="new-password" onChange={(e) => setPassword(e.target.value)} />
-            {!validePassword && errorMessage && <p>le mot de passe doit contenir au moins 5 caractéres</p>}
+            {!validePassword && errorMessage && <p>Your password must contain a minimum of 5 characters.</p>}
           </div>
           <div className="input-wrapper">
             <label htmlFor="passwordConfirmation">Confirm password</label>
@@ -72,7 +72,7 @@ export default function SignUp() {
               autoComplete="new-password"
               onChange={(e) => setPasswordConfirmation(e.target.value)}
             />
-            {!validePasswordConfirmation && errorMessage && <p>doit etre egale au mot de passe</p>}
+            {!validePasswordConfirmation && errorMessage && <p>Must be equal to your password</p>}
           </div>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>

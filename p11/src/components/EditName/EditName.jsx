@@ -25,28 +25,6 @@ export default function EditName({ onSubmit }) {
     }
   };
 
-  // const ChangeUserName = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     await fetch("http://localhost:3001/api/v1/user/profile", {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify({ userName: editUserName }),
-  //     });
-
-  //     console.log(onSubmit);
-  //     onSubmit();
-
-  //     dispatch(setNewUserName({ editUserName }));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   return (
     <section className="editName-content">
       <h1>Edit your username</h1>

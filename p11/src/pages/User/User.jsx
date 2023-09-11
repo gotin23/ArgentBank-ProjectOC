@@ -4,7 +4,6 @@ import Account from "../../components/Account/Account";
 import EditName from "../../components/EditName/EditName";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-// import { getProfile } from "../../service/Api";
 import { setGetProfile } from "../../Redux/Reducers/ProfileUserReducer";
 import { performApiAction } from "../../service/Api";
 
@@ -44,7 +43,7 @@ export default function Users() {
           {dataUser.firstName + " " + dataUser.lastName + " !"}
         </h1>
         <button className="edit-button" onClick={handleEditName}>
-          Edit Name
+          {!toggleEditName ? "Edit name" : "cancel"}
         </button>
 
         {toggleEditName && <EditName onSubmit={handleEditName} />}
